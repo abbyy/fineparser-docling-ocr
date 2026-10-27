@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fineparser-docling-ocr"
+version = "0.1.0"
+description = "ABBYY FineParser as a Docling OCR engine plugin"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{ name = "ABBYY" }]
+keywords = ["docling", "ocr", "abbyy", "fineparser"]
+requires-python = ">=3.10"
+dependencies = ["docling>=2.139", "httpx>=0.27", "pillow"]
+
+[project.urls]
+Repository = "https://github.com/abbyy/fineparser-docling-ocr"
+FineParser = "https://github.com/abbyy/FineParser"
+Documentation = "https://docs.abbyy.com/fine-parser/getting-started/introduction"
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.entry-points."docling"]
+abbyy_fineparser = "fineparser_docling_ocr.plugin"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
